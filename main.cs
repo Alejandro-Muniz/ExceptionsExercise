@@ -9,7 +9,11 @@ class MainClass
     return x / y;
   }
 
-
+  static int CheckFileExtension(string studentFile)
+  {
+    if (studentFile.Contains(".cs")) return 1;
+    else return 0;
+  }
 
 
   public static void Main (string[] args) 
@@ -37,6 +41,34 @@ class MainClass
       Console.WriteLine($"\n The score is {Divide (x,y)}.\n");
     }
     
+    //************************************************************************
 
+    int score = 0;
+    Dictionary<string, int> studentPoints = new Dictionary<string, int>();
+    Dictionary<string, string> studentFiles = new Dictionary<string, string>
+    {
+      {"Jim", "Program.cs"},
+      {"Joe", "accounts.ps1"},
+      {"Jef", "homework.cs"},
+      {"Jay", "my_file.cpp"},
+      {"Jon", "final.bat"},
+      {"Joy", "myAssignment.cs"},
+      {"Jes", "theFile.com"},
+      {"Jen", "jenFile.cs"},
+      {"Jeb", "forTurnIn.js"},
+      {"Jud", "programOne.cs"}
+    };
+
+    foreach (KeyValuePair<string, string> student in studentFiles)
+    {
+      score = CheckFileExtension(student.Value);
+      studentPoints.Add(student.Key, score);
+      Console.WriteLine (student);
+    }
+    Console.WriteLine("\n");
+    foreach (KeyValuePair<string, int> student in studentPoints)
+    {
+      Console.WriteLine(student);
+    }
   }
 }
